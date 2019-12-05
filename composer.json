@@ -1,0 +1,6 @@
+{
+    "require": {
+        "monolog/monolog": "1.0.*",
+        "rmccue/requests": "^1.7"
+    }
+}
