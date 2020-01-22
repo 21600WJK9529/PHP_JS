@@ -5,6 +5,7 @@
   <title>Deregistration</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="script.js"></script>
+  <link rel="icon" href="http://localhost/Practice/Practice/Registration/download.png">
 </head>
 <body onload="idleLogout();">
   <div class="header">
@@ -14,7 +15,7 @@
   	<?php include('errors.php'); ?>
   	<div class="input-group">
   	  <label>Username</label>
-  	  <input type="text" name="dereg_username" value="<?php echo $username; ?>">
+  	  <label><?echo $_SESSION['username'] ?></label>
 	</div>
 
   	<div class="input-group">

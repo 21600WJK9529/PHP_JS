@@ -20,7 +20,9 @@ if (isset($_POST['reg_user'])) {
   if (empty($password_1)) { array_push($errors, "Password is required"); }
 
   // Check if username exists
-  $user_check_query = "SELECT * FROM users WHERE username='$username'";
+  $user_check_query = "SELECT * 
+                       FROM users 
+                       WHERE username='$username'";
   $result = mysqli_query($db, $user_check_query);
   $user   = mysqli_fetch_assoc($result);
   
@@ -61,7 +63,10 @@ if (isset($_POST['login_user'])) {
 
   if (count($errors) == 0 ) {
   	$password = md5($password);
-  	$query = "SELECT ID,username, password, active  FROM users WHERE username='$username' AND password='$password'";
+  	$query = "SELECT ID,username, password, active  
+              FROM users 
+              WHERE username='$username' 
+              AND password='$password'";
     $results = mysqli_query($db, $query);
     $row = mysqli_fetch_array($results);
     $active = $row['active'];
@@ -80,7 +85,7 @@ if (isset($_POST['login_user'])) {
 
 //DEACTIVATE USER
 if (isset($_POST['dereg_user'])) {
-  $username = mysqli_real_escape_string($db, $_POST['dereg_username']);
+  $username = mysqli_real_escape_string($db, $_SESSION['username']);
   $password = mysqli_real_escape_string($db, $_POST['dereg_pw1']);
 
   if (empty($username)) {
@@ -94,7 +99,8 @@ if (isset($_POST['dereg_user'])) {
   	$password = md5($password);
     $query = "SELECT id 
               FROM users 
-              WHERE username='$username' AND password='$password'"; 
+              WHERE username='$username' 
+              AND password='$password'"; 
     $results = mysqli_query($db, $query);
     $row = mysqli_fetch_array($results);
     $id = $row['id'];
@@ -110,6 +116,7 @@ if (isset($_POST['dereg_user'])) {
   }
 }
 //--------------------------------------------------------------------------------
+
 //MESSAGES
 if(isset($_POST['msg_send'])){
   $message = mysqli_escape_string($db, $_POST['inputMsg']);

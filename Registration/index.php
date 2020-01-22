@@ -1,6 +1,6 @@
 <?php 
   session_start(); 
-    
+    /** Check if session username is set, if not redirect to login */
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
@@ -17,6 +17,7 @@
 	<title>Home</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js"></script>
+    <link rel="icon" href="http://localhost/Practice/Practice/Registration/download.png">
 </head>
 <body onload="idleLogout();">
 
